@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>À Propos — Sarl ADAM HB LIFT | Ascenseurs Électriques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Additional styles for About page */
+.page-header{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;background:var(--k);margin-top:74px;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80') center/cover;opacity:.3}
+.page-header-content{position:relative;z-index:2;text-align:center;padding:60px}
+.page-tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:20px}
+.page-tag::before{content:'';display:block;width:30px;height:1.5px;background:var(--r)}
+.page-title{font-family:var(--fd);font-size:clamp(48px,6vw,80px);line-height:.9;letter-spacing:-.01em;color:var(--w);margin-bottom:20px}
+.page-subtitle{font-size:16px;font-weight:300;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto;line-height:1.7}
+
+.story-section{padding:100px 0;background:var(--w)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--g5)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-content h3{font-family:var(--fd);font-size:32px;color:var(--k);margin-bottom:24px;line-height:1.1}
+.story-content p{font-size:15px;font-weight:300;color:var(--g2);line-height:1.85;margin-bottom:20px}
+.story-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.story-stat{padding:24px;background:var(--w2);border-left:3px solid var(--r)}
+.story-stat-n{font-family:var(--fd);font-size:36px;color:var(--r);line-height:1}
+.story-stat-l{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);margin-top:6px}
+
+.values-section{padding:100px 0;background:var(--w2)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.value-card{background:var(--w);padding:40px 30px;border:1px solid var(--g5);transition:all .3s var(--ease);position:relative;overflow:hidden}
+.value-card:hover{border-color:var(--r);transform:translateY(-5px);box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.value-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.value-card:hover::before{transform:scaleX(1)}
+.value-ico{width:50px;height:50px;background:var(--rg);display:flex;align-items:center;justify-content:center;color:var(--r);margin-bottom:24px}
+.value-t{font-family:var(--fd);font-size:22px;color:var(--k);margin-bottom:12px}
+.value-d{font-size:13.5px;font-weight:300;line-height:1.7;color:var(--g3)}
+
+.team-section{padding:100px 0;background:var(--w)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px}
+.team-card{position:relative;overflow:hidden;background:var(--g5);aspect-ratio:3/4}
+.team-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:all .5s var(--ease)}
+.team-card:hover img{filter:grayscale(0%);transform:scale(1.05)}
+.team-info{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(0,0,0,.9),transparent);transform:translateY(100%);transition:transform .4s var(--ease)}
+.team-card:hover .team-info{transform:translateY(0)}
+.team-name{font-family:var(--fd);font-size:20px;color:var(--w);margin-bottom:4px}
+.team-role{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--r)}
+
+.certif-section{padding:80px 0;background:var(--k)}
+.certif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:50px;text-align:center}
+.certif-item{padding:30px;border:1px solid rgba(255,255,255,.1);transition:all .3s}
+.certif-item:hover{border-color:var(--r);background:rgba(217,27,27,.05)}
+.certif-ico{font-size:40px;color:var(--r);margin-bottom:16px}
+.certif-t{font-family:var(--fd);font-size:18px;color:var(--w);margin-bottom:8px}
+.certif-d{font-size:12px;font-weight:300;color:rgba(255,255,255,.4)}
+
+@media(max-width:1024px){
+  .story-grid{grid-template-columns:1fr;gap:50px}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .certif-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .values-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .certif-grid{grid-template-columns:1fr}
+  .story-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="cur"><div id="cur-d"></div><div id="cur-r"></div></div>
+
+<div id="loader">
+  <div class="ld-logo"><img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="logo"/></div>
+  <div class="ld-track"><div class="ld-fill"></div></div>
+  <div class="ld-txt">Chargement en cours…</div>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="nlogo">
+    <img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="ADAM HB LIFT"/>
+    <div><div class="nlogo-t">Sarl ADAM HB LIFT</div><div class="nlogo-s">Ascenseurs Électriques</div></div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html" class="active">À Propos</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="index.html#why">Nos Atouts</a></li>
+    <li><a href="index.html#process">Processus</a></li>
+    <li><a href="index.html#testi">Témoignages</a></li>
+    <li><a href="index.html#contact" class="ncta">Contact</a></li>
+  </ul>
+  <button class="nbtn" id="hbtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="mnav">
+  <button id="mnav-x">✕</button>
+  <a href="index.html">Accueil</a>
+  <a href="a-propos.html">À Propos</a>
+  <a href="services.html">Services</a>
+  <a href="index.html#why">Nos Atouts</a>
+  <a href="index.html#process">Processus</a>
+  <a href="index.html#testi">Témoignages</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content rv">
+    <div class="page-tag">Notre Entreprise</div>
+    <h1 class="page-title">À PROPOS DE<br><em style="color:var(--r)">ADAM HB LIFT</em></h1>
+    <p class="page-subtitle">Une histoire d'excellence, d'innovation et d'engagement envers la sécurité et la satisfaction client depuis plus de 10 ans.</p>
+  </div>
+</section>
+
+<!-- NOTRE HISTOIRE -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img rv">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Notre histoire"/>
+      </div>
+      <div class="story-content rv2">
+        <div class="stag">Notre Histoire</div>
+        <h3>Plus d'une décennie d'excellence dans l'élévation</h3>
+        <p>Fondée en 2014, SARL ADAM HB LIFT est née d'une vision claire : offrir à l'Algérie des solutions d'ascenseurs électriques à la hauteur des standards internationaux. Ce qui a commencé comme une petite entreprise familiale est devenu aujourd'hui un acteur majeur du secteur.</p>
+        <p>Notre parcours est marqué par une croissance constante, guidée par notre engagement envers la qualité, la sécurité et l'innovation. Chaque projet que nous réalisons renforce notre réputation d'excellence et notre relation de confiance avec nos clients.</p>
+        <p>Aujourd'hui, avec plus de 500 installations réalisées à travers l'Algérie, nous continuons d'innover et d'investir dans les dernières technologies pour offrir à nos clients les solutions les plus performantes et les plus sûres du marché.</p>
+        
+        <div class="story-stats">
+          <div class="story-stat">
+            <div class="story-stat-n">2014</div>
+            <div class="story-stat-l">Année de création</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-n">Relizane</div>
+            <div class="story-stat-l">Siège social</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOS VALEURS -->
+<section class="values-section">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center">Notre Philosophie</div>
+      <h2 class="sh" style="text-align:center">Nos <em>Valeurs</em></h2>
+    </div>
+    <div class="values-grid rv2">
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div class="value-t">Sécurité Avant Tout</div>
+        <div class="value-d">La sécurité de nos passagers et de nos techniciens est notre priorité absolue. Chaque installation respecte les normes les plus strictes.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="value-t">Excellence Opérationnelle</div>
+        <div class="value-d">Nous visons l'excellence dans chaque aspect de notre travail, de la conception à l'installation, en passant par la maintenance.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="value-t">Service Client</div>
+        <div class="value-d">Nous plaçons nos clients au cœur de nos préoccupations. Leur satisfaction est notre meilleure récompense et notre plus belle publicité.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="value-t">Intégrité</div>
+        <div class="value-d">Transparence, honnêteté et éthique professionnelle guident toutes nos relations commerciales et nos interventions.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <div class="value-t">Innovation Continue</div>
+        <div class="value-d">Nous investissons constamment dans les nouvelles technologies pour offrir à nos clients les solutions les plus modernes et efficaces.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-ico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="value-t">Respect des Délais</div>
+        <div class="value-d">Nous respectons scrupuleusement les délais convenus car nous savons que chaque jour compte pour nos clients.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTRE ÉQUIPE -->
+<section class="team-section">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center">Notre Force</div>
+      <h2 class="sh" style="text-align:center">Notre <em>Équipe</em></h2>
+      <p style="max-width:600px;margin:20px auto 0;font-size:15px;font-weight:300;color:var(--g3);line-height:1.7">Une équipe passionnée et qualifiée, dédiée à votre satisfaction et à votre sécurité.</p>
+    </div>
+    <div class="team-grid rv2">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Directeur"/>
+        <div class="team-info">
+          <div class="team-name">Mohamed Adam</div>
+          <div class="team-role">Fondateur & DG</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Manager"/>
+        <div class="team-info">
+          <div class="team-name">Sarah Benali</div>
+          <div class="team-role">Directrice Commerciale</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Technicien"/>
+        <div class="team-info">
+          <div class="team-name">Karim Hadj</div>
+          <div class="team-role">Chef Technique</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Ingénieure"/>
+        <div class="team-info">
+          <div class="team-name">Nadia Amrani</div>
+          <div class="team-role">Ingénieure Projet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certif-section">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center;color:var(--r)">Notre Crédibilité</div>
+      <h2 class="sh" style="text-align:center;color:var(--w)">Certifications & <em style="color:var(--r)">Agréments</em></h2>
+    </div>
+    <div class="certif-grid rv2">
+      <div class="certif-item">
+        <div class="certif-ico">🏆</div>
+        <div class="certif-t">ISO 9001</div>
+        <div class="certif-d">Management de la qualité</div>
+      </div>
+      <div class="certif-item">
+        <div class="certif-ico">🛡️</div>
+        <div class="certif-t">ISO 45001</div>
+        <div class="certif-d">Santé et sécurité au travail</div>
+      </div>
+      <div class="certif-item">
+        <div class="certif-ico">⚡</div>
+        <div class="certif-t">Normes Algériennes</div>
+        <div class="certif-d">Certifié conforme NA</div>
+      </div>
+      <div class="certif-item">
+        <div class="certif-ico">🔧</div>
+        <div class="certif-t">Techniciens Certifiés</div>
+        <div class="certif-d">Formation continue obligatoire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner rv">
+      <div><h2 class="cta-t">Travaillons<br>Ensemble</h2><p class="cta-s">Faites confiance à notre expertise pour vos projets d'ascenseurs. Contactez-nous dès aujourd'hui.</p></div>
+      <div class="cta-acts">
+        <a href="services.html" class="btn-w"><span>Nos Services</span></a>
+        <a href="index.html#contact" class="btn-gw">Nous Contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="flogo"><img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="logo"/><div><div class="flogo-t">ADAM HB LIFT</div><div class="flogo-s">SARL — Ascenseurs Électriques</div></div></div>
+        <p class="fdesc">Votre partenaire de confiance pour l'installation, la maintenance et la modernisation des ascenseurs électriques en Algérie.</p>
+        <div class="fsoc">
+          <a href="#" class="fsi" aria-label="Facebook"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="fsi" aria-label="Instagram"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="fsi" aria-label="LinkedIn"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="fsi" aria-label="WhatsApp"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="fct">Navigation</div><ul class="flinks"><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À Propos</a></li><li><a href="services.html">Nos Services</a></li><li><a href="index.html#why">Nos Atouts</a></li><li><a href="index.html#process">Processus</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div><div class="fct">Services</div><ul class="flinks"><li><a href="services.html">Installation</a></li><li><a href="services.html">Maintenance</a></li><li><a href="services.html">Dépannage 24/7</a></li><li><a href="services.html">Modernisation</a></li><li><a href="services.html">Monte-Charges</a></li><li><a href="services.html">Panoramiques</a></li></ul></div>
+      <div>
+        <div class="fct">Contact</div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="fci-t">Algérie — Relizane<br>Cité 2000 Logements AADL El Nasr </div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2.18C.06 1.1.94.1 2 .1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="fci-t">+213 (5) 50 74 74 77 </div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="fci-t"><a href="mailto:contact@adamhblift.dz" style="color:inherit">contact@adamhblift.dz</a></div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="fci-t">Sam–Jeu : 8h–18h<br>Urgences : 24h/7j</div></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="fcopy">© 2026 <span>SARL ADAM HB LIFT</span>. Tous droits réservés.</div>
+      <div class="fleg"><a href="#">Mentions Légales</a><a href="#">Confidentialité</a><a href="#">CGU</a></div>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
