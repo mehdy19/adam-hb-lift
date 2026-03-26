@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Services — Sarl ADAM HB LIFT | Ascenseurs Électriques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Additional styles for Services page */
+.page-header{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;background:var(--k);margin-top:74px;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80') center/cover;opacity:.3}
+.page-header-content{position:relative;z-index:2;text-align:center;padding:60px}
+.page-tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:20px}
+.page-tag::before{content:'';display:block;width:30px;height:1.5px;background:var(--r)}
+.page-title{font-family:var(--fd);font-size:clamp(48px,6vw,80px);line-height:.9;letter-spacing:-.01em;color:var(--w);margin-bottom:20px}
+.page-subtitle{font-size:16px;font-weight:300;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto;line-height:1.7}
+
+.services-detailed{padding:100px 0;background:var(--w)}
+.service-detail{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:100px}
+.service-detail:nth-child(even){direction:rtl}
+.service-detail:nth-child(even) > *{direction:ltr}
+.service-detail-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--g5)}
+.service-detail-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.service-detail:hover .service-detail-img img{transform:scale(1.05)}
+.service-detail-num{position:absolute;top:-20px;left:-20px;font-family:var(--fd);font-size:120px;color:var(--r);opacity:.1;line-height:1;z-index:2}
+.service-detail-content{position:relative}
+.service-detail-ico{width:60px;height:60px;background:var(--rg);display:flex;align-items:center;justify-content:center;color:var(--r);margin-bottom:24px}
+.service-detail h3{font-family:var(--fd);font-size:36px;color:var(--k);margin-bottom:20px;line-height:1.1}
+.service-detail p{font-size:15px;font-weight:300;color:var(--g2);line-height:1.85;margin-bottom:20px}
+.service-features{list-style:none;margin:24px 0}
+.service-features li{display:flex;align-items:center;gap:12px;margin-bottom:12px;font-size:14px;color:var(--g2)}
+.service-features li::before{content:'✓';width:20px;height:20px;background:var(--r);color:var(--w);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+
+.service-types{padding:100px 0;background:var(--w2)}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.type-card{background:var(--w);padding:40px 30px;border:1px solid var(--g5);text-align:center;transition:all .3s var(--ease)}
+.type-card:hover{border-color:var(--r);transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
+.type-ico{width:70px;height:70px;background:var(--rg);display:flex;align-items:center;justify-content:center;color:var(--r);margin:0 auto 24px;font-size:28px}
+.type-t{font-family:var(--fd);font-size:22px;color:var(--k);margin-bottom:12px}
+.type-d{font-size:13.5px;font-weight:300;line-height:1.7;color:var(--g3)}
+
+.why-service{padding:100px 0;background:var(--k);color:var(--w)}
+.why-grid-dark{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:60px}
+.why-item-dark{text-align:center;padding:30px}
+.why-num-dark{font-family:var(--fd);font-size:48px;color:var(--r);margin-bottom:12px}
+.why-t-dark{font-size:16px;font-weight:600;margin-bottom:8px}
+.why-d-dark{font-size:13px;font-weight:300;color:rgba(255,255,255,.5)}
+
+.garantie-section{padding:100px 0;background:var(--w)}
+.garantie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+.garantie-card{text-align:center;padding:40px;background:var(--w2);border:2px solid transparent;transition:all .3s}
+.garantie-card:hover{border-color:var(--r);background:var(--w)}
+.garantie-ico{font-size:48px;margin-bottom:20px}
+.garantie-t{font-family:var(--fd);font-size:24px;color:var(--k);margin-bottom:12px}
+.garantie-d{font-size:14px;font-weight:300;color:var(--g3);line-height:1.7}
+
+@media(max-width:1024px){
+  .service-detail{grid-template-columns:1fr;gap:40px}
+  .service-detail:nth-child(even){direction:ltr}
+  .types-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid-dark{grid-template-columns:repeat(2,1fr)}
+  .garantie-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .types-grid{grid-template-columns:1fr}
+  .why-grid-dark{grid-template-columns:1fr}
+  .service-detail-num{font-size:80px;top:-10px;left:-10px}
+}
+</style>
+</head>
+<body>
+<div id="cur"><div id="cur-d"></div><div id="cur-r"></div></div>
+
+<div id="loader">
+  <div class="ld-logo"><img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="logo"/></div>
+  <div class="ld-track"><div class="ld-fill"></div></div>
+  <div class="ld-txt">Chargement en cours…</div>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="nlogo">
+    <img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="ADAM HB LIFT"/>
+    <div><div class="nlogo-t">Sarl ADAM HB LIFT</div><div class="nlogo-s">Ascenseurs Électriques</div></div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À Propos</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="index.html#why">Nos Atouts</a></li>
+    <li><a href="index.html#process">Processus</a></li>
+    <li><a href="index.html#testi">Témoignages</a></li>
+    <li><a href="index.html#contact" class="ncta">Contact</a></li>
+  </ul>
+  <button class="nbtn" id="hbtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="mnav">
+  <button id="mnav-x">✕</button>
+  <a href="index.html">Accueil</a>
+  <a href="a-propos.html">À Propos</a>
+  <a href="services.html">Services</a>
+  <a href="index.html#why">Nos Atouts</a>
+  <a href="index.html#process">Processus</a>
+  <a href="index.html#testi">Témoignages</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content rv">
+    <div class="page-tag">Nos Prestations</div>
+    <h1 class="page-title">NOS <em style="color:var(--r)">SERVICES</em></h1>
+    <p class="page-subtitle">Des solutions complètes et sur mesure pour tous vos besoins en ascenseurs électriques, de l'installation à la maintenance.</p>
+  </div>
+</section>
+
+<!-- SERVICES DETAIL -->
+<section class="services-detailed">
+  <div class="container">
+    
+    <!-- Service 1: Installation -->
+    <div class="service-detail rv">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Installation"/>
+        <div class="service-detail-num">01</div>
+      </div>
+      <div class="service-detail-content">
+        <div class="service-detail-ico">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 10h6M9 14h6M12 2v4M12 18v4"/></svg>
+        </div>
+        <h3>Installation d'Ascenseurs Électriques</h3>
+        <p>Nous réalisons l'installation complète d'ascenseurs électriques pour tous types de bâtiments : résidentiels, commerciaux, industriels et institutionnels. Notre équipe d'ingénieurs et de techniciens certifiés assure une installation conforme aux normes les plus strictes.</p>
+        <ul class="service-features">
+          <li>Étude technique et faisabilité gratuite</li>
+          <li>Conception sur mesure selon vos besoins</li>
+          <li>Installation par des techniciens certifiés</li>
+          <li>Mise en service et formation du personnel</li>
+          <li>Certification et conformité aux normes</li>
+        </ul>
+        <a href="index.html#contact" class="btn-red"><span>Demander un Devis</span><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Service 2: Maintenance -->
+    <div class="service-detail rv">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Maintenance"/>
+        <div class="service-detail-num">02</div>
+      </div>
+      <div class="service-detail-content">
+        <div class="service-detail-ico">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Maintenance Préventive</h3>
+        <p>Notre service de maintenance préventive garantit la longévité et la performance optimale de vos équipements. Nos contrats de maintenance sont adaptés à votre usage et à vos contraintes budgétaires.</p>
+        <ul class="service-features">
+          <li>Visites régulières programmées</li>
+          <li>Vérification complète des systèmes de sécurité</li>
+          <li>Lubrification et réglage des composants</li>
+          <li>Remplacement préventif des pièces usées</li>
+          <li>Rapport détaillé après chaque intervention</li>
+        </ul>
+        <a href="index.html#contact" class="btn-red"><span>Demander un Devis</span><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Service 3: Dépannage -->
+    <div class="service-detail rv">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="Dépannage"/>
+        <div class="service-detail-num">03</div>
+      </div>
+      <div class="service-detail-content">
+        <div class="service-detail-ico">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3>Dépannage 24h/24 et 7j/7</h3>
+        <p>Une panne imprévue ? Notre service de dépannage d'urgence intervient rapidement pour minimiser le temps d'arrêt de vos ascenseurs. Disponibles 24 heures sur 24, 7 jours sur 7, nos techniciens sont prêts à répondre à vos besoins.</p>
+        <ul class="service-features">
+          <li>Hotline d'urgence disponible 24/7</li>
+          <li>Intervention rapide sous 2 heures en zone couverte</li>
+          <li>Techniciens équipés pour toutes réparations</li>
+          <li>Pièces de rechange d'origine en stock</li>
+          <li>Rapport d'intervention détaillé</li>
+        </ul>
+        <a href="tel:+213550747477" class="btn-red"><span>Urgence: +213 550 74 74 77</span><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Service 4: Modernisation -->
+    <div class="service-detail rv">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Modernisation"/>
+        <div class="service-detail-num">04</div>
+      </div>
+      <div class="service-detail-content">
+        <div class="service-detail-ico">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3>Modernisation et Rénovation</h3>
+        <p>Donnez une seconde vie à vos anciens ascenseurs ! Notre service de modernisation permet d'améliorer la sécurité, le confort et l'esthétique de vos équipements existants tout en réduisant leur consommation énergétique.</p>
+        <ul class="service-features">
+          <li>Remplacement de la cabine et des portes</li>
+          <li>Mise à jour des systèmes de commande</li>
+          <li>Amélioration de l'efficacité énergétique</li>
+          <li>Accessibilité PMR (Personnes à Mobilité Réduite)</li>
+          <li>Design personnalisé et éclairage LED</li>
+        </ul>
+        <a href="index.html#contact" class="btn-red"><span>Étude Gratuite</span><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Service 5: Monte-Charges -->
+    <div class="service-detail rv">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="Monte-Charges"/>
+        <div class="service-detail-num">05</div>
+      </div>
+      <div class="service-detail-content">
+        <div class="service-detail-ico">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <h3>Monte-Charges Industriels</h3>
+        <p>Solutions robustes et fiables pour le transport vertical de marchandises dans vos entrepôts, usines, restaurants et commerces. Nos monte-charges sont conçus pour supporter des charges lourdes et un usage intensif.</p>
+        <ul class="service-features">
+          <li>Capacité de charge jusqu'à 5000 kg</li>
+          <li>Dimensions personnalisables</li>
+          <li>Systèmes de sécurité complets</li>
+          <li>Installation intérieure ou extérieure</li>
+          <li>Maintenance et SAV inclus</li>
+        </ul>
+        <a href="index.html#contact" class="btn-red"><span>Demander un Devis</span><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TYPES D'ASCENSEURS -->
+<section class="service-types">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center">Nos Spécialités</div>
+      <h2 class="sh" style="text-align:center">Types d'<em>Ascenseurs</em></h2>
+    </div>
+    <div class="types-grid rv2">
+      <div class="type-card">
+        <div class="type-ico">🏢</div>
+        <div class="type-t">Résidentiels</div>
+        <div class="type-d">Solutions élégantes et silencieuses pour immeubles d'habitation, du petit collectif aux grandes résidences.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-ico">🏪</div>
+        <div class="type-t">Commerciaux</div>
+        <div class="type-d">Ascenseurs performants pour centres commerciaux, bureaux et hôtels avec design personnalisable.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-ico">🏭</div>
+        <div class="type-t">Industriels</div>
+        <div class="type-d">Équipements robustes pour environnements industriels, entrepôts et usines avec charges lourdes.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-ico">🌆</div>
+        <div class="type-t">Panoramiques</div>
+        <div class="type-d">Ascenseurs vitrés pour une expérience unique et une vue panoramique imprenable.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-ico">♿</div>
+        <div class="type-t">PMR</div>
+        <div class="type-d">Solutions d'accessibilité conformes aux normes pour personnes à mobilité réduite.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-ico">🏥</div>
+        <div class="type-t">Hospitaliers</div>
+        <div class="type-d">Ascenseurs spéciaux pour établissements de santé avec grande capacité et hygiène optimale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI NOUS CHOISIR -->
+<section class="why-service">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center;color:var(--r)">Notre Engagement</div>
+      <h2 class="sh" style="text-align:center;color:var(--w)">Pourquoi Choisir <em style="color:var(--r)">ADAM HB LIFT</em> ?</h2>
+    </div>
+    <div class="why-grid-dark rv2">
+      <div class="why-item-dark">
+        <div class="why-num-dark">10+</div>
+        <div class="why-t-dark">Années d'Expérience</div>
+        <div class="why-d-dark">Expertise reconnue dans le domaine des ascenseurs</div>
+      </div>
+      <div class="why-item-dark">
+        <div class="why-num-dark">500+</div>
+        <div class="why-t-dark">Projets Réalisés</div>
+        <div class="why-d-dark">À travers toute l'Algérie avec succès</div>
+      </div>
+      <div class="why-item-dark">
+        <div class="why-num-dark">24/7</div>
+        <div class="why-t-dark">Support Disponible</div>
+        <div class="why-d-dark">Assistance technique permanente</div>
+      </div>
+      <div class="why-item-dark">
+        <div class="why-num-dark">100%</div>
+        <div class="why-t-dark">Satisfaction Client</div>
+        <div class="why-d-dark">Notre priorité absolue</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIES -->
+<section class="garantie-section">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <div class="stag" style="justify-content:center">Votre Tranquillité</div>
+      <h2 class="sh" style="text-align:center">Nos <em>Garanties</em></h2>
+    </div>
+    <div class="garantie-grid rv2">
+      <div class="garantie-card">
+        <div class="garantie-ico">🛡️</div>
+        <div class="garantie-t">Garantie Pièces</div>
+        <div class="garantie-d">Toutes nos pièces d'origine sont garanties 2 ans minimum contre tout défaut de fabrication.</div>
+      </div>
+      <div class="garantie-card">
+        <div class="garantie-ico">⚙️</div>
+        <div class="garantie-t">Garantie Main d'Œuvre</div>
+        <div class="garantie-d">Nos interventions sont couvertes par une garantie sur la main d'œuvre de 1 an.</div>
+      </div>
+      <div class="garantie-card">
+        <div class="garantie-ico">📞</div>
+        <div class="garantie-t">Assistance 24/7</div>
+        <div class="garantie-d">Notre hotline est disponible à tout moment pour répondre à vos urgences.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner rv">
+      <div><h2 class="cta-t">Besoin d'un<br>Devis ?</h2><p class="cta-s">Contactez-nous dès maintenant pour une étude gratuite de votre projet. Notre équipe vous répond sous 24h.</p></div>
+      <div class="cta-acts">
+        <a href="tel:+213550747477" class="btn-w"><span>Appeler Maintenant</span></a>
+        <a href="index.html#contact" class="btn-gw">Formulaire de Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="flogo"><img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="logo"/><div><div class="flogo-t">ADAM HB LIFT</div><div class="flogo-s">SARL — Ascenseurs Électriques</div></div></div>
+        <p class="fdesc">Votre partenaire de confiance pour l'installation, la maintenance et la modernisation des ascenseurs électriques en Algérie.</p>
+        <div class="fsoc">
+          <a href="#" class="fsi" aria-label="Facebook"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="fsi" aria-label="Instagram"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="fsi" aria-label="LinkedIn"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="fsi" aria-label="WhatsApp"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="fct">Navigation</div><ul class="flinks"><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À Propos</a></li><li><a href="services.html">Nos Services</a></li><li><a href="index.html#why">Nos Atouts</a></li><li><a href="index.html#process">Processus</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div><div class="fct">Services</div><ul class="flinks"><li><a href="services.html">Installation</a></li><li><a href="services.html">Maintenance</a></li><li><a href="services.html">Dépannage 24/7</a></li><li><a href="services.html">Modernisation</a></li><li><a href="services.html">Monte-Charges</a></li><li><a href="services.html">Panoramiques</a></li></ul></div>
+      <div>
+        <div class="fct">Contact</div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="fci-t">Algérie — Relizane<br>Cité 2000 Logements AADL El Nasr </div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2.18C.06 1.1.94.1 2 .1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="fci-t">+213 (5) 50 74 74 77 </div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="fci-t"><a href="mailto:contact@adamhblift.dz" style="color:inherit">contact@adamhblift.dz</a></div></div>
+        <div class="fci"><div class="fci-ico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="fci-t">Sam–Jeu : 8h–18h<br>Urgences : 24h/7j</div></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="fcopy">© 2026 <span>SARL ADAM HB LIFT</span>. Tous droits réservés.</div>
+      <div class="fleg"><a href="#">Mentions Légales</a><a href="#">Confidentialité</a><a href="#">CGU</a></div>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
