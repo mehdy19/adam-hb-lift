@@ -70,19 +70,31 @@
 <body>
 
 <!-- NAV -->
-<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:74px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background .3s">
-  <a href="index.html" class="nlogo" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
-    <img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="ADAM HB LIFT" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--r)" loading="eager"/>
-    <div><div style="font-family:var(--fd);font-size:19px;letter-spacing:.08em;color:var(--k);line-height:1">Sarl ADAM HB LIFT</div><div style="font-size:8px;font-weight:600;letter-spacing:.3em;color:var(--r);text-transform:uppercase;margin-top:2px">Ascenseurs Électriques</div></div>
+<nav id="nav">
+  <a href="index.html" class="nlogo">
+    <img src="https://i.ibb.co/NXhZYh0/IMG-6790.jpg" alt="ADAM HB LIFT"/>
+    <div><div class="nlogo-t">Sarl ADAM HB LIFT</div><div class="nlogo-s">Ascenseurs Électriques</div></div>
   </a>
-  <ul class="nlinks" style="list-style:none;display:flex;align-items:center;gap:30px">
-    <li><a href="index.html" style="font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--g2);text-decoration:none">Accueil</a></li>
-    <li><a href="a-propos.html" style="font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--g2);text-decoration:none">À Propos</a></li>
-    <li><a href="services.html" style="font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--g2);text-decoration:none">Services</a></li>
-    <li><a href="products.html" style="font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--r);text-decoration:none">Produits</a></li>
-    <li><a href="contact.html" style="background:var(--k);color:var(--w);padding:10px 20px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;text-decoration:none">Contact</a></li>
+ <ul class="nlinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À Propos</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="products.html" class="active">Produits</a></li>
+    <li><a href="index.html#why">Nos Atouts</a></li>
+    <li><a href="contact.html" class="ncta">Contact</a></li>
   </ul>
+  <button class="nbtn" id="hbtn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+
+<div id="mnav">
+  <button id="mnav-x">✕</button>
+  <a href="index.html">Accueil</a>
+  <a href="a-propos.html">À Propos</a>
+  <a href="services.html">Services</a>
+  <a href="products.html">Produits</a>
+  <a href="index.html#why">Nos Atouts</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
