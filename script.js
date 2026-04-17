@@ -1,8 +1,10 @@
 // Loader
-window.addEventListener('load', () =>
-  setTimeout(() =>
-    document.getElementById('loader').classList.add('out'), 1800)
-);
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => loader.classList.add('out'), 1800);
+  }
+});
 
 // Cursor effect
 const cd = document.getElementById('cur-d'),
