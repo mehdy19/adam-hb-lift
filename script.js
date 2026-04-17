@@ -73,3 +73,46 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.rv, .rv2').forEach(el => obs.observe(el));
+
+// ===== LAZY LOAD PRODUCTS IMAGES =====
+const allImgContainers = document.querySelectorAll('.product-img');
+
+function loadImage(container) {
+  const img = container.querySelector('img');
+  const src = container.getAttribute('data-src');
+
+  if (!img || !src || img.src) return;
+
+  img.src = src;
+
+  img.onload = () => {
+    img.classList.add('loaded');
+    container.classList.add('loaded');
+  };
+
+  img.onerror = () => {
+    container.style.background = '#ddd';
+    container.classList.add('loaded');
+  };
+}
+
+// إذا المتصفح يدعم IntersectionObserver
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadImage(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '300px',
+    threshold: 0
+  });
+
+  allImgContainers.forEach(c => observer.observe(c));
+
+} else {
+  // fallback (تحميل مباشر)
+  allImgContainers.forEach(loadImage);
+}
