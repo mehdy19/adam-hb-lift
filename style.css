@@ -306,3 +306,8 @@ footer{background:var(--k2);border-top:1px solid rgba(255,255,255,.04)}
   .svc-head{flex-direction:column;align-items:flex-start}
   .scroll-hint{left:24px}
 }
+/* إخفاء المؤشر المخصص على الجوال واللمس */
+@media (hover: none) and (pointer: coarse) {
+  #cur { display: none !important; }
+  body, a, button { cursor: auto !important; }
+}
